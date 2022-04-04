@@ -1,0 +1,6 @@
+<h1>Editing Address</h1>
+
+<%= render 'form', address: @address, url: user_address_path %>
+
+<%= link_to 'Show', user_address_path(@address.user, @address) %> |
+<%= link_to 'Back', user_addresses_path %>

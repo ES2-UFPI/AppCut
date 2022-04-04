@@ -1,6 +1,12 @@
 <h1>Home#index</h1>
-<%= link_to "Cadastrar", new_user_registration_path unless current_user %>
-<br>
-<%= link_to "Entrar", new_user_session_path unless current_user %>
-<br>
-<%= link_to "Sair", destroy_user_session_path, method: :delete if current_user %>
+<% unless current_user %>
+  <%= link_to "Cadastrar", new_user_registration_path %>
+  <br>
+  <%= link_to "Entrar", new_user_session_path %>
+<% end %>
+
+<% if current_user %>
+  <%= link_to "Meus endereços", user_addresses_path(current_user) %>
+  <br>
+  <%= link_to "Sair", destroy_user_session_path, method: :delete %>
+<% end %>
