@@ -1,0 +1,2 @@
+class ProfissionalProfilesController < ApplicationController
+end

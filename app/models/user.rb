@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   extend Enumerize
-
+  has_one :professional_profile, dependent: :destroy
   has_many :addresses, dependent: :destroy
 
   # Include default devise modules. Others available are:
@@ -12,5 +12,5 @@ class User < ApplicationRecord
   validates :document, presence: true
   validates :profile, presence: true
 
-  enumerize :profile, in: %i[barber_shop client], default: :barber_shop, predicates: true, scope: true
+  enumerize :profile, in: %i[barber_shop client], default: :client, predicates: true, scope: true
 end

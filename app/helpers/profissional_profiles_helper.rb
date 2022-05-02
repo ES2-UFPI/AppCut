@@ -1,0 +1,2 @@
+module ProfissionalProfilesHelper
+end
