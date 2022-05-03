@@ -1,5 +1,5 @@
 class ProfessionalProfilesController < ApplicationController
-    before_action :set_professional_profile, only: [:show, :edit, :update]
+    before_action :set_professional_profile, only: [:show, :edit, :update, :destroy]
     
     # def new
     #     @professional_profile = ProfessionalProfille.find(params[:id])
@@ -17,6 +17,13 @@ class ProfessionalProfilesController < ApplicationController
     end
 
     def show
+    end
+
+    def destroy
+        @professional_profile.barber_shop_images.find(params[:id])
+        @professional_profile.barber_shop_images.push
+        # @professional_profile.barber_shop_images.purge
+        # redirect_to user_professional_profile_path(current_user.professional_profile), notice: "Your profile was successfully deleted"
     end
 
     private 
