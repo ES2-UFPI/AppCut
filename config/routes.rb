@@ -6,5 +6,8 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[show] do
     resources :addresses
+    resources :professional_profiles do
+      resources :agendas, except: [:index]
+    end
   end
 end
