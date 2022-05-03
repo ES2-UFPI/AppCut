@@ -1,0 +1,13 @@
+
+ 
+<%= form_with model: professional_profile, url: user_professional_profile_path(@professional_profile),
+               local: true do |f| %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <%= f.label :business_hours %>
+    <%= f.number_field :business_hours %>
+    <br><br>
+    <%= f.file_field :barber_shop_images, multiple: true %><br /><br />
+    <%= f.file_field :haircut_images, multiple: true %><br /><br />
+    <%= f.submit 'Upload' %>
+<% end %>
