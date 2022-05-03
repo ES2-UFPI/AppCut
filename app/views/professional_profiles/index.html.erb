@@ -1,0 +1,14 @@
+<h1>ProfessionalProfile#index</h1>
+<% unless current_user %>
+  <%= link_to "Cadastrar", new_user_registration_path %>
+  <br>
+  <%= link_to "Entrar", new_user_session_path %>
+<% end %>
+
+<% if current_user %>
+  <%= link_to "editar perfil", edit_user_professional_profile_path(current_user) %>
+  <br>
+  <%= link_to "mostrar perfil", user_professional_profile_path(current_user) %>
+  <br>
+  <%= link_to "Sair", destroy_user_session_path, method: :delete %>
+<% end %>
