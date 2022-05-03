@@ -6,5 +6,6 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[show] do
     resources :addresses
+    resources :professional_profiles
   end
 end
