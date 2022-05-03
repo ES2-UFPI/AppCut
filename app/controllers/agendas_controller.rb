@@ -4,8 +4,7 @@ class AgendasController < ApplicationController
   end
 
   def create  
-    @agenda = current_user.professional_profile.agendas.new
-
+    @agenda = current_user.professional_profile.agendas.new(agenda_params)
     respond_to do |format|
       if @agenda.save
         format.html { redirect_to user_professional_profile_agenda_path(current_user.id, current_user.professional_profile.id, @agenda.id), notice: "Agenda was successfully created." }
@@ -52,7 +51,4 @@ class AgendasController < ApplicationController
     def agenda_params
       params.require(:agenda).permit(:id, :start_time, :professional_profile_id)
     end
-
-
-
 end
