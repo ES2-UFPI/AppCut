@@ -17,6 +17,7 @@ class ProfessionalProfilesController < ApplicationController
     end
 
     def show
+        @agenda = current_user.professional_profile.agendas.new
     end
 
     def destroy
