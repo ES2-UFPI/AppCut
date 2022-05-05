@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Addresses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>CEP</th>
+      <th>State</th>
+      <th>City</th>
+      <th>Neighborhood</th>
+      <th>Street</th>
+      <th>Number</th>
+      <th>Complement</th>
+      <th>Reference</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @addresses.each do |address| %>
+      <tr>
+        <td><%= address.user.name %></td>
+        <td><%= address.cep %></td>
+        <td><%= address.state %></td>
+        <td><%= address.city %></td>
+        <td><%= address.neighborhood %></td>
+        <td><%= address.street %></td>
+        <td><%= address.number %></td>
+        <td><%= address.complement %></td>
+        <td><%= address.reference %></td>
+        <td><%= link_to 'Show', user_address_path(address.user, address) %></td>
+        <td><%= link_to 'Edit', edit_user_address_path(address.user, address) %></td>
+        <td><%= link_to 'Destroy', user_address_path(address.user, address), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Address', new_user_address_path %>
+<br>
+<%= link_to "Home", root_path %>
