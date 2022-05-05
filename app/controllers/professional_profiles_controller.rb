@@ -5,10 +5,16 @@ class ProfessionalProfilesController < ApplicationController
     #     @professional_profile = ProfessionalProfille.find(params[:id])
     # end
 
+    # def index
+    #     @professional_profiles = ProfessionalProfile.all
+    # end
+
     def edit
+        authorize @professional_profile
     end
 
     def update
+        authorize @professional_profile
         if current_user.professional_profile.update(professional_profile_params)
             redirect_to user_professional_profile_path(current_user.professional_profile), notice: "Your profile was successfully updated"
         else
@@ -20,6 +26,7 @@ class ProfessionalProfilesController < ApplicationController
     end
 
     def destroy
+        authorize @professional_profile
         @professional_profile.barber_shop_images.find(params[:id])
         @professional_profile.barber_shop_images.push
         # @professional_profile.barber_shop_images.purge
