@@ -1,4 +1,4 @@
-<h1>Home#index</h1>
+<h1 class= "title has-text-primary">Home#index</h1>
 <% unless current_user %>
   <%= link_to "Cadastrar", new_user_registration_path %>
   <br>
@@ -8,5 +8,10 @@
 <% if current_user %>
   <%= link_to "Meus endereços", user_addresses_path(current_user) %>
   <br>
+  <%= link_to "exibir perfil", user_professional_profile_path(current_user,current_user.professional_profile) %>
+  <br>
   <%= link_to "Sair", destroy_user_session_path, method: :delete %>
 <% end %>
+
+
+
