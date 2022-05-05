@@ -2,6 +2,7 @@ class User < ApplicationRecord
   extend Enumerize
   has_one :professional_profile, dependent: :destroy
   has_many :addresses, dependent: :destroy
+  has_many :haircut_schedules, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
