@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 require ("jquery")
 import "bulma/css/bulma.css"
+import "../../../node_modules/bulma/css/bulma.css"
 
 Rails.start()
 Turbolinks.start()
