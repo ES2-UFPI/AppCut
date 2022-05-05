@@ -8,6 +8,7 @@ class AddressesController < ApplicationController
 
   # GET /addresses/1 or /addresses/1.json
   def show
+    # @address = current_user.addresses.find(params[:id])
   end
 
   # GET /addresses/new
