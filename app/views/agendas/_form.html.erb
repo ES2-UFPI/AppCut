@@ -1,0 +1,21 @@
+<%= form_with(model: agenda, url: url) do |form| %>
+  <% if agenda.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(agenda.errors.count, "error") %> prohibited this agenda from being saved:</h2>
+      <ul>
+        <% agenda.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :start_time %>
+    <%= form.datetime_field :start_time %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
