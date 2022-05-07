@@ -41,7 +41,7 @@ class ProfessionalProfilesController < ApplicationController
     end
 
     def professional_profile_params
-        params.require(:professional_profile).permit(:description,:business_hours,:active, :user_id,barber_shop_images: [], haircut_images: [])
+        params.require(:professional_profile).permit(:description,:business_hours,:active, :user_id, :logo, barber_shop_images: [], haircut_images: [])
     end
 
 
