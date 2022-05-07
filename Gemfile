@@ -5,7 +5,8 @@ ruby '3.1.1'
 
 gem 'devise'
 gem 'enumerize'
-
+gem 'font-awesome-sass', '~> 6.1.1'
+gem "kaminari"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.5'

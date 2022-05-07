@@ -14,3 +14,35 @@ import "../../../node_modules/bulma/css/bulma.css"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$(document).on('turbolinks:load', function() {
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+
+  });
+});
+
+$(document).on('turbolinks:load', function() {
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-item.dropdown").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-item.dropdown").toggleClass("is-active");
+  });
+});
+
+$(document).on('turbolinks:load', function() {
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-item.has-dropdown").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-item.has-dropdown").toggleClass("is-active");
+  });
+});

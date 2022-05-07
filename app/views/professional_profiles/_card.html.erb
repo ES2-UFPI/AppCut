@@ -1,0 +1,26 @@
+<% if barber_shop.logo.present? && barber_shop.description.present? %>
+  <div class="card">
+    <div class="card-image">
+      <figure class="image">
+        <a href="/users/<%= barber_shop.user.id %>/professional_profiles/<%= barber_shop.id %>"><%= image_tag barber_shop.logo, :size => "300x300"  %></a>
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            <%= image_tag barber_shop.logo, :size => "300x300"  %>
+          </figure>
+        </div>
+        <div class="media-content">
+          <p class="title is-4"><%= barber_shop.user.name %></p>
+          <p class="subtitle is-6"><a href="/users/<%= barber_shop.user.id %>/professional_profiles/<%= barber_shop.id %>">@<%= barber_shop.user.name %></a></p>
+        </div>
+      </div>
+
+      <div class="content">
+        <%= barber_shop.description %>
+      </div>
+    </div>
+  </div>
+<% end %>
