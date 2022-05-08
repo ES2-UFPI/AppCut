@@ -8,6 +8,14 @@
           <img class="is-rounded" src="<%= @professional_profile.logo%>" alt="">
           <%= image_tag @professional_profile.logo, class:"is-rounded"  %>
           <h1 class="title has-text-centered section-title">About Me</h1>
+          <% if current_user %>
+            <% if policy(current_user).edit? %>
+              <div class="column has-text-centered ">
+                <%= link_to "editar perfil", edit_user_professional_profile_path(current_user), class: "button is-dark" %>
+                <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "button is-warning" %>
+              </div>
+            <% end %>
+          <% end %>
           <h3 class="subtitle"><%= @professional_profile.description %></h3>
         </div>
       </div>
@@ -82,17 +90,17 @@
         <div class="column is-12">
           <h1 class="title has-text-centered section-title">Galeria de Cortes</h1>
         </div>
-         <% @professional_profile.barber_shop_images.each do |image| %>
-          
-         <% end %>
+        <% @professional_profile.haircut_images.each do |image| %>
 
-        <% @professional_profile.barber_shop_images %>
-        <div class="column is-3">
-          <a href="#">
-            <figure class="image is-2by1 work-item" style="background-image: url('https://picsum.photos/320/180?image=0');"></figure>
-          </a>
-        </div>
-        
+          <div class="column is-3">
+            <a href="#">
+              <figure class="image is-2by1 work-item">
+                 <%= image_tag image %>
+              </figure>
+            </a>
+          </div>
+         
+        <% end%>
       </div>
     </div>
   </div>
