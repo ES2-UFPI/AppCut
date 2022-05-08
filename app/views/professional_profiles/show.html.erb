@@ -12,7 +12,6 @@
             <% if policy(@professional_profile).edit? %>
               <div class="column has-text-centered ">
                 <%= link_to "editar perfil", edit_user_professional_profile_path(current_user), class: "button is-dark" %>
-                <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "button is-warning" %>
                 <%= render "/agendas/modal_agenda" %>
               </div>
             <% end %>
