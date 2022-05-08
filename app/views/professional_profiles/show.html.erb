@@ -9,10 +9,11 @@
           <%= image_tag @professional_profile.logo, class:"is-rounded"  %>
           <h1 class="title has-text-centered section-title">About Me</h1>
           <% if current_user %>
-            <% if policy(current_user).edit? %>
+            <% if policy(@professional_profile).edit? %>
               <div class="column has-text-centered ">
                 <%= link_to "editar perfil", edit_user_professional_profile_path(current_user), class: "button is-dark" %>
                 <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "button is-warning" %>
+                <%= render "/agendas/modal_agenda" %>
               </div>
             <% end %>
           <% end %>
