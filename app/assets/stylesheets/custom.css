@@ -24,17 +24,15 @@ body, button, input, select, textarea {
 }
 
 
-.main-content .section-dark.my-work {
-    padding: 120px;
-}
 
-.main-content .section-dark {
+
+.section-dark {
     background-color: #f0f3f5;
-    padding: 60px 0px;
+    /* padding: 60px 0px; */
 }
 
 /* cards images */
-.main-content .section-dark.my-work .work-item {
+.section-dark.my-work .work-item {
     margin-bottom: 1rem;
     -webkit-transition: all .1s ease-in-out;
     transition: all .1s ease-in-out;
