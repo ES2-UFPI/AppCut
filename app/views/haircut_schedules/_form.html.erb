@@ -1,21 +1,43 @@
-<%= form_with(model: @haircut_schedule, url: url) do |form| %>
-  <% if @haircut_schedule.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@haircut_schedule.errors.count, "error") %> prohibited this @haircut_schedule from being saved:</h2>
-      <ul>
-        <% @haircut_schedule.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+<div class="columns">
+  <div class="column is-6 is-offset-3">
+    <div class="card">
+      <div class="card-content">
+        <p class="subtitle"><strong>Confime o hoŕario e valor, antes de finalizar</strong></p>
+        <%= form_with(model: @haircut_schedule, url: url) do |form| %>
+          <% if @haircut_schedule.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@haircut_schedule.errors.count, "error") %> prohibited this @haircut_schedule from being saved:</h2>
+              <ul>
+                <% @haircut_schedule.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="field">
+            <div class="control">
+              <%= form.label :reservation_date, class: "label" %>
+              <div class="select">
+                <%= form.select :reservation_date, return_datetimes(@haircut_schedule).collect {|u| u.strftime("%d/%m/%Y às %H:%M")}, :prompt => 'Select' %>
+              </div>
+            </div>
+          </div>
+
+          <p class="subtitle">Valor do agendamento: <strong>R$<%= barber_shop.price %></strong></p>
+
+          <div class="field is-grouped is-grouped-center">
+            <div class="control">
+              <%= form.submit "Concluído", class: "button is-dark" %>
+            </div>
+            <div class="control">
+              <%= link_to "Cancelar", root_path, class: "button is-warning" %>
+            </div>
+          </div>
+          <hr>
+          <p>Lembre-se de chegar no horário marcado, e respeitar todos.</p>
         <% end %>
-      </ul>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :reservation_date %>
-    <%= form.select(:reservation_date, return_datetimes(@haircut_schedule).collect {|u| u.strftime("%d/%m/%Y às %H:%M")}, :prompt => 'Select') %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

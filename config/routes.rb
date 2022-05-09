@@ -15,7 +15,5 @@ Rails.application.routes.draw do
     resources :agendas, only: %i[index show] do
       resources :haircut_schedules, except: %i[index]
     end
-
-    
   end
 end

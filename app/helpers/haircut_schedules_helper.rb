@@ -5,7 +5,13 @@ module HaircutSchedulesHelper
     datetimes = []
 
     for n in 0..business_hours - 1 do
-      datetimes << start_time + n.hour
+      if record.agenda.haircut_schedules.any?
+        unless record.agenda.haircut_schedules.where(reservation_date: start_time + n.hour).any?
+          datetimes << start_time + n.hour
+        end
+      else
+        datetimes << start_time + n.hour
+      end        
     end
 
     datetimes
