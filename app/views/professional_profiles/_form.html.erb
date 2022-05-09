@@ -27,6 +27,13 @@
       </div>
 
       <div class="field">
+        <%= form.label :price, class: "label" %>
+        <div class="control">
+          <%= form.number_field :price, class: "input is-info", placeholder: "Preço", step: :any %>
+        </div>
+      </div>
+
+      <div class="field">
         <%= form.label :logo, class: "label" %>
         <div class="control">
           <%= form.file_field :logo, class: "input is-info", placeholder: "Logo" %>
