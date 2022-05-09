@@ -1,0 +1,21 @@
+<%= form_with(model: @haircut_schedule, url: url) do |form| %>
+  <% if @haircut_schedule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@haircut_schedule.errors.count, "error") %> prohibited this @haircut_schedule from being saved:</h2>
+      <ul>
+        <% @haircut_schedule.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :reservation_date %>
+    <%= form.select(:reservation_date, return_datetimes(@haircut_schedule).collect {|u| u.strftime("%d/%m/%Y às %H:%M")}, :prompt => 'Select') %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
