@@ -1,0 +1,20 @@
+<div class="box">
+	<div class="field">
+		<div class="image-coment px-5">
+			<span class="icon">
+				<%= icon("fas", "star", class: "has-text-warning")*rate.rate %>
+			</span>
+		</div>
+		<div class="text-coment">
+			<div class="text-field">
+				<div class="text-author">
+					<p>@<%= rate.user.name %></p>
+				</div>  
+			</div>
+				<p><%= rate.comment %></p>
+        <div class="text-date">
+          <p class="has-text-right subtitle is-size-7"><%= rate.created_at.to_s(:rate) %></p>
+        </div>
+		</div>
+	</div>
+</div>
