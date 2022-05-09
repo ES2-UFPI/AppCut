@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2022_05_08_223516) do
     t.boolean "active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.decimal "price", precision: 10, scale: 2, default: 0
+    t.decimal "price", precision: 10, scale: 2
     t.index ["user_id"], name: "index_professional_profiles_on_user_id"
   end
 
