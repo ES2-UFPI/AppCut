@@ -2,6 +2,7 @@ class ProfessionalProfile < ApplicationRecord
   belongs_to :user
 
   has_many :agendas, dependent: :destroy
+  has_many :haircut_schedules, through: :agendas
 
   # active storage
   has_one_attached :logo
