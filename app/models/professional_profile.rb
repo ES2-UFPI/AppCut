@@ -3,6 +3,7 @@ class ProfessionalProfile < ApplicationRecord
 
   has_many :agendas, dependent: :destroy
   has_many :haircut_schedules, through: :agendas
+  has_many :rates, dependent: :destroy
 
   # active storage
   has_one_attached :logo

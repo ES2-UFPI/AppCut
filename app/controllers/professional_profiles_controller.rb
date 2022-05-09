@@ -24,6 +24,8 @@ class ProfessionalProfilesController < ApplicationController
 
     def show
         @agenda = current_user.professional_profile.agendas.new
+        @rate = current_user.professional_profile.rates.new
+        @rates = current_user.professional_profile.rates.all
     end
 
     def destroy

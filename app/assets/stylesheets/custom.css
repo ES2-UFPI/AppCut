@@ -154,3 +154,13 @@ figure.image.is-2by1.work-item {
     height: 171px;
     object-fit: cover;
 }
+.columns.is-multiline.aos-init.aos-animate {
+    padding: 20px;
+}
+
+.title-comment.pt-6 {
+    text-align: right!important;
+    font-family: sky-bold,Poppins,sans-serif;
+    text-transform: capitalize;
+    color: #212121;
+}

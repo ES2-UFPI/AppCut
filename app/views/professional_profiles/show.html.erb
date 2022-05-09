@@ -54,6 +54,20 @@
         </div>
       </div>
     </div>
+
+    <div class="main center justify-content">
+      <%= render "/rates/form" %>
+    </div>
+    <div class="title has-text-centered pt-6 ">
+      <h1 class="title">Avaliações</h1>
+      <hr>
+    </div>
+    <% @rates.each do |rate| %>
+       <%= render "/rates/rate", rate: rate %>
+    <% end %>
+
+    
+
   </div>
 
 

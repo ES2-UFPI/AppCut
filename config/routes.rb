@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :addresses
     resources :professional_profiles do
       resources :agendas, except: [:index]
+      resources :rates, only: [:new, :create ]
     end
   end
 
