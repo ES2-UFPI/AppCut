@@ -25,10 +25,11 @@ class ProfessionalProfilesController < ApplicationController
     def show
       if current_user
         @rate = current_user.professional_profile.rates.new
+        if current_user.professional_profile.id == params[:id]
+          @agenda = current_user.professional_profile.agendas.new
+        end
       end
-      if current_user && current_user.professional_profile.id == params[:id]
-        @agenda = current_user.professional_profile.agendas.new
-      end
+      
       @rates = @professional_profile.rates.order(
           created_at: :asc
       ).page(params[:page]).per(5)
