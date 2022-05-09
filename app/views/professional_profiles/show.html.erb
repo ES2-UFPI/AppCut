@@ -55,6 +55,10 @@
       </div>
     </div>
 
+    <div class="title has-text-centered pt-6 ">
+      <h1 class="title">Deixe aqui seu Feedback</h1>
+      <hr>
+    </div>
     <div class="main center justify-content">
       <%= render "/rates/form" %>
     </div>
@@ -62,9 +66,15 @@
       <h1 class="title">Avaliações</h1>
       <hr>
     </div>
-    <% @rates.each do |rate| %>
-       <%= render "/rates/rate", rate: rate %>
-    <% end %>
+    
+      <% @rates.each do |rate| %>
+        <%= render "/rates/rate", rate: rate %>
+      <% end %>
+    
+      <div class="control-paginator pt-5">
+        <%= paginate @rates %>
+      </div>
+   
 
     
 

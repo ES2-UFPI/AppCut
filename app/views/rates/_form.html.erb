@@ -1,37 +1,39 @@
-<%= form_with model: @rate, url: user_professional_profile_rates_path(professional_profile_id: current_user.professional_profile.id), local: true do |form| %>
-    <div class="">
-        <div class="box">
-            <% if @rate.errors.any? %>
-                <div id="error_explanation">
-                    <h2><%= pluralize(@rate.errors.count, "error") %> prohibited this @rate from being saved:</h2>
-                    <ul>
-                        <% @rate.errors.each do |error| %>
-                            <li><%= error.full_message %></li>
-                        <% end %>
-                    </ul>
+<% if current_user && current_user.client? %>
+    <%= form_with model: @rate, url: user_professional_profile_rates_path(professional_profile_id: current_user.professional_profile.id), local: true do |form| %>
+        <div class="">
+            <div class="box">
+                <% if @rate.errors.any? %>
+                    <div id="error_explanation">
+                        <h2><%= pluralize(@rate.errors.count, "error") %> prohibited this @rate from being saved:</h2>
+                        <ul>
+                            <% @rate.errors.each do |error| %>
+                                <li><%= error.full_message %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>
+                <div class="field">
+                    <%= form.label :rate, class: "label" %>
+                    <div class="control">
+                        <%= form.number_field :rate, class: "input is-info", placeholder: "Número de estrelas" %>
+                    </div>
                 </div>
-            <% end %>
-            <div class="field">
-                <%= form.label :rate, class: "label" %>
-                <div class="control">
-                    <%= form.number_field :rate, class: "input is-info", placeholder: "Número de estrelas" %>
+                <div class="field">
+                    <%= form.label :comentário, class: "label" %>
+                    <div class="control">
+                        <%= form.text_field :comment, class: "input is-info", placeholder: "Comentário", step: :any %>
+                    </div>
                 </div>
-            </div>
-            <div class="field">
-                <%= form.label :comentário, class: "label" %>
-                <div class="control">
-                    <%= form.text_field :comment, class: "input is-info", placeholder: "Comentário", step: :any %>
-                </div>
-            </div>
-            <div class="field is-grouped is-grouped-right">
-                <div class="control">
-                    <%= form.submit "Concluído", class: "button is-dark" %>
-                </div>
-                <div class="control">
-                    <%= link_to "Cancelar", root_path, class: "button is-warning" %>
+                <div class="field is-grouped is-grouped-right">
+                    <div class="control">
+                        <%= form.submit "Concluído", class: "button is-dark" %>
+                    </div>
+                    <div class="control">
+                        <%= link_to "Cancelar", root_path, class: "button is-warning" %>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
+    <% end %>
 <% end %>

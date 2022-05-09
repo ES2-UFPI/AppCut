@@ -23,9 +23,15 @@ class ProfessionalProfilesController < ApplicationController
     end
 
     def show
-        @agenda = current_user.professional_profile.agendas.new
+      if current_user
         @rate = current_user.professional_profile.rates.new
-        @rates = current_user.professional_profile.rates.all
+      end
+      if current_user && current_user.professional_profile.id == params[:id]
+        @agenda = current_user.professional_profile.agendas.new
+      end
+      @rates = @professional_profile.rates.order(
+          created_at: :asc
+      ).page(params[:page]).per(5)
     end
 
     def destroy
