@@ -20,28 +20,39 @@
           <%= link_to "Perfil Profissional", user_professional_profile_path(current_user, current_user.professional_profile), class: "button is-link is-outlined" %>
         </div>
       <% end %>
-      <div class="navbar-item dropdown is-right" id="dropdown-menu2">
-        <div class="dropdown-trigger">
-          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
-            <span><%= icon("fas", "bell") %></span>
-          </button>
-        </div>
-        <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-          <div class="dropdown-content">
-            <div class="dropdown-item">
-              <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
-            </div>
-            <hr class="dropdown-divider">
-            <div class="dropdown-item">
-              <p>You simply need to use a <code>&lt;div&gt;</code> instead.</p>
-            </div>
-            <hr class="dropdown-divider">
-            <a href="#" class="dropdown-item">
-              This is a link
-            </a>
+      <% if current_user %>
+        <div class="navbar-item dropdown is-right" id="dropdown-menu2">
+          <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2">
+              <span><%= icon("fas", "bell") %></span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+            <% unless @haircut_schedules.nil? %>
+              <div class="dropdown-content">
+                <% @haircut_schedules.each do |haircut_schedule| %>
+                  <div class="columns">
+                    <div class="column is-10">
+                      <a href="/professional_profiles/<%= haircut_schedule.agenda.professional_profile.id %>/agendas/<%= haircut_schedule.agenda.id %>/haircut_schedules/<%= haircut_schedule.id %>" class="dropdown-item">
+                        <p class="subtitle is-size-7">Agendamento em <%= haircut_schedule.agenda.professional_profile.user.name %></p>
+                        <p class="subtitle is-size-7">Horário: <%= haircut_schedule.reservation_date.strftime("%d/%m/%Y às %H:%M") %></p>
+                      </a>
+                    </div>
+                    <div class="column">
+                      <% if haircut_schedule.reservation_date > Time.now %>
+                        <%= icon("fas", "check", class: "has-text-success") %>
+                      <% else %>
+                        <%= icon("fas", "xmark", class: "has-text-danger") %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <hr class="dropdown-divider">
+                <% end %>
+              </div>
+            <% end %>
           </div>
         </div>
-      </div>
+      <% end %>
       <% if current_user %>
         <div class="navbar-item has-dropdown pl-6">
           <div class="navbar-link">

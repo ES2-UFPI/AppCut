@@ -1,7 +1,7 @@
 
 
   <div class="column is-offset-2 is-8" id="">
-    <% if current_user && policy(@professional_profile).edit? %>
+    <% if current_user %>
       <%= render "level_menu" %>
     <% end %>
     
@@ -22,11 +22,7 @@
           <% @professional_profile.barber_shop_images.each do |image| %>
 
             <div class="column is-3">
-              <a href="#">
-                <figure class="image is-2by1 work-item">
-                  <%= image_tag image %>
-                </figure>
-              </a>
+              <%= image_tag image, size: "250x250" %>
             </div>
           
           <% end%>
@@ -41,15 +37,9 @@
             <h1 class="title has-text-centered section-title">Galeria de Cortes</h1>
           </div>
           <% @professional_profile.haircut_images.each do |image| %>
-
             <div class="column is-3">
-              <a href="#">
-                <figure class="image is-2by1 work-item">
-                  <%= image_tag image %>
-                </figure>
-              </a>
+              <%= image_tag image, size: "250x250" %>
             </div>
-          
           <% end%>
         </div>
       </div>

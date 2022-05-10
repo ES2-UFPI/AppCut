@@ -32,7 +32,7 @@
           <% end %>
           <div class="field is-grouped is-right">
             <div class="control">   
-              <%= link_to "Log in", new_session_path(resource_name), class: "button is-black" %>
+              <%= f.submit "Log in", class: "button is-black" %>
             </div>
             <div class="control">
                 <%= link_to "Cadastre-se", new_registration_path(resource_name), class: "button is-dark" %>

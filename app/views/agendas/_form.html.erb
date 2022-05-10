@@ -1,4 +1,3 @@
-<% if current_user && current_user.professional_profile.id == params[:id] %>
   <%= form_with(model: agenda, url: url) do |form| %>
     <% if agenda.errors.any? %>
       <div id="error_explanation">
@@ -20,4 +19,3 @@
       <%= form.submit %>
     </div>
   <% end %>
-<% end %>

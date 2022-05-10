@@ -13,10 +13,8 @@ Rails.application.routes.draw do
   end
 
   resources :professional_profiles, only: %i[show] do
-    resources :agendas, only: %i[index show] do
+    resources :agendas, only: %i[index show destroy] do
       resources :haircut_schedules, except: %i[index]
     end
-
-    
   end
 end

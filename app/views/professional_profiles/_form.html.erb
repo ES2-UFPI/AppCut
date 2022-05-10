@@ -1,5 +1,4 @@
 <%= form_with model: professional_profile, url: user_professional_profile_path(@professional_profile), local: true do |form| %>
-  <div class="column is-offset-12 is-12">
     <div class="box">
       <% if professional_profile.errors.any? %>
         <div id="error_explanation">
@@ -63,6 +62,5 @@
         </div>
       </div>
     </div>
-  </div>
 
 <% end %>

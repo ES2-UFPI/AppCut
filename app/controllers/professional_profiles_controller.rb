@@ -1,4 +1,5 @@
 class ProfessionalProfilesController < ApplicationController
+    before_action :authenticate_user!, only: %i[edit update destroy]
     before_action :set_professional_profile, only: [:show, :edit, :update, :destroy]
     
     # def new
@@ -25,7 +26,7 @@ class ProfessionalProfilesController < ApplicationController
     def show
       if current_user
         @rate = current_user.professional_profile.rates.new
-        if current_user.professional_profile.id == params[:id]
+        if current_user.professional_profile.id == params[:id].to_i
           @agenda = current_user.professional_profile.agendas.new
         end
       end
