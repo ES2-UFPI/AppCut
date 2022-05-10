@@ -1,56 +1,77 @@
-<%= form_with(model: address, url: url) do |form| %>
-  <% if address.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
-      <ul>
-        <% address.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+  <div class="column is-4 is-offset-4">
+    <div class="card has-background-grey-lighter">
+      <div class="card-header">
+        <p class="card-header-title is-size-4">
+          Endereço
+        <p>
+      </div>
+        <div class="card-content has-text-white">
+          <%= form_with(model: address, url: url) do |form| %>
+          <% if address.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
+              <ul>
+                <% address.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="field">
+            <%= form.label :cep, class: "lable" %>
+            <div class="control">
+            <%= form.text_field :cep, autofocus: true, autocomplete: "CEP", class:"input", placeholder: "CEP" %>
+            </div>
+          </div>
+          <div class="field">
+            <%= form.label :state, class: "lable" %>
+            <div class="control">
+            <%= form.text_field :state, autofocus: true, autocomplete: "Estado", class:"input", placeholder: "Estado" %>
+            </div>
+          </div>
+          <div class="field">
+            <%= form.label :city, class: "lable" %>
+            <div class="control">
+            <%= form.text_field :city, autofocus: true, autocomplete: "Cidade", class:"input", placeholder: "Cidade" %>
+            </div>
+          </div>
+          <div class="field">
+            <%= form.label :neighborhood, class: "lable" %>
+            <div class="control">
+            <%= form.text_field :neighborhood, autofocus: true, autocomplete: "Bairro", class:"input", placeholder: "Bairro" %>
+            </div>
+          </div>
+          <div class="field">
+            <%= form.label :street, class: "lable" %>
+            <div class="control">
+            <%= form.text_field :street, autofocus: true, autocomplete: "Rua", class:"input", placeholder: "Rua" %>
+            </div>
+          </div>
+          <div class="field">
+            <%= form.label :number, class: "lable" %>
+            <div class="control">
+            <%= form.text_field :number, autofocus: true, autocomplete: "Número", class:"input", placeholder: "Número" %>
+            </div>
+          </div>
+          <div class="field">
+            <%= form.label :complement, class: "lable" %>
+            <div class="control">
+            <%= form.text_field :complement, autofocus: true, autocomplete: "Complemento", class:"input", placeholder: "Complemento" %>
+            </div>
+          </div>
+          <div class="field">
+            <%= form.label :reference, class: "lable" %>
+            <div class="control">
+            <%= form.text_field :reference, autofocus: true, autocomplete: "Referência", class:"input", placeholder: "Referência" %>
+            </div>
+          </div>
+          <div class="actions">
+            <div class="control">
+              <%= form.submit %>
+            </div>
+          </div>
         <% end %>
-      </ul>
+        </div>
     </div>
-  <% end %>
+  </div>  
 
-  <div class="field">
-    <%= form.label :cep %>
-    <%= form.text_field :cep %>
-  </div>
-
-  <div class="field">
-    <%= form.label :state %>
-    <%= form.text_field :state %>
-  </div>
-
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
-  </div>
-
-  <div class="field">
-    <%= form.label :neighborhood %>
-    <%= form.text_field :neighborhood %>
-  </div>
-
-  <div class="field">
-    <%= form.label :street %>
-    <%= form.text_field :street %>
-  </div>
-
-  <div class="field">
-    <%= form.label :number %>
-    <%= form.text_field :number %>
-  </div>
-
-  <div class="field">
-    <%= form.label :complement %>
-    <%= form.text_field :complement %>
-  </div>
-
-  <div class="field">
-    <%= form.label :reference %>
-    <%= form.text_field :reference %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

@@ -7,11 +7,11 @@
     
     <div class="has-text-centered">
       <div class="right-image aos-init aos-animate" data-aos="fade-left">
-        <p><%= image_tag @professional_profile.logo, class:"is-rounded", size: "350x350" %></p>
+        <p><%= image_tag @professional_profile.logo, class:"is-rounded", size: "350x350" if @professional_profile.logo.present? %></p>
         <h1 class="title has-text-centered section-title">Barber Shop</h1>
       </div>
     </div>
-    <h3 class="subtitle"><%= @professional_profile.description %></h3>
+    <h3 class="subtitle has-text-centered"><%= @professional_profile.description %></h3>
 
     <div class="section-dark my-work" id="my-work">
       <div class="container">
@@ -19,6 +19,13 @@
           <div class="column is-12">
             <h1 class="title has-text-centered section-title">Conheça Nosso Estabelecimento</h1>
           </div>
+          <% if @professional_profile.user.adresses.last.present? %>
+            <div class="column is-12">
+              <h3 class="subtitle has-text-centered"><% address = @professional_profile.user.addresses.last %>
+                CEP: <%= address.cep %>, Estado: <%= address.state %> Cidade: <%= address.city %>, Bairro:<%= address.neighborhood %>, Rua: <%= address.street %>, Nº: <%= address.number %> Complemento: <%= address.complement %>, Referência: <%= address.reference %>
+              </h3>
+            </div>
+          <% end %>
           <% @professional_profile.barber_shop_images.each do |image| %>
 
             <div class="column is-3">
