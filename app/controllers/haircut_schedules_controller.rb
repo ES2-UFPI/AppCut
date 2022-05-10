@@ -1,4 +1,5 @@
 class HaircutSchedulesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_haircut_schedule, only: %i[show edit update destroy]
 
   def show

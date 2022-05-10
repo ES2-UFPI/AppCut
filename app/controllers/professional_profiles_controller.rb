@@ -1,4 +1,5 @@
 class ProfessionalProfilesController < ApplicationController
+    before_action :authenticate_user!, only: %i[edit update destroy]
     before_action :set_professional_profile, only: [:show, :edit, :update, :destroy]
     
     # def new

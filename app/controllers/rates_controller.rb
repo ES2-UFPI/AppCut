@@ -1,4 +1,5 @@
 class RatesController < ApplicationController
+    before_action :authenticate_user!, only: %i[edit new create]
     before_action :set_rate, only: %i[show edit destroy update]
     def new
         @rate = rate.new
