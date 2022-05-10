@@ -15,12 +15,14 @@
           </div>
         </div>
         <div class="field is-grouped is-right">
-          <%= f.submit "asnioasdnioasd", class: "button is-black" %>
+          <div class="control">
+            <%= f.submit "Enviar email para mudança de senha", class: "button is-black" %>
+          </div>
           <div class="control">   
-            <%= link_to "Log in", new_session_path(resource_name), class: "button is-dark" %>
+            <%= link_to "Log in", new_user_session_path, class: "button is-dark" %>
           </div>
           <div class="control">
-            <%= link_to "Cadastre-se", new_registration_path(resource_name), class: "button is-warning" %>
+            <%= link_to "Cadastre-se", new_user_registration_path, class: "button is-warning" %>
           </div>
         </div>
       <% end %>

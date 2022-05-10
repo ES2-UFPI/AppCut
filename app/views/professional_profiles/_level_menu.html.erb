@@ -3,7 +3,7 @@
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Avaliações</p>
-        <p class="title">3,456</p>
+        <p class="title"><%= @rates.size %></p>
       </div>
     </div>
     <div class="level-item has-text-centered">
@@ -24,13 +24,19 @@
         <p class="title"><%= render "/agendas/modal_agenda" %></p>
       </div>
     </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Ver agendas</p>
+        <p class="title"><%= link_to "Agendas", professional_profile_agendas_path(@professional_profile), class: "button is-success" %></p>
+      </div>
+    </div>
   </nav>
 <% else %>
   <nav class="level">
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Avaliações</p>
-        <p class="title">3,456</p>
+        <p class="title"><%= @rates.size %></p>
       </div>
     </div>
     <div class="level-item has-text-centered">
@@ -42,7 +48,7 @@
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Agendamento</p>
-        <p class="title"><%= link_to icon("fas", "scissors"), root_path, class: "button is-dark is-outlined" %></p>
+        <p class="title"><%= link_to icon("fas", "scissors"), new_professional_profile_agenda_haircut_schedule_path(@professional_profile, @professional_profile.agendas.last), class: "button is-dark is-outlined" if @professional_profile.agendas.any? %></p>
       </div>
     </div>
   </nav>

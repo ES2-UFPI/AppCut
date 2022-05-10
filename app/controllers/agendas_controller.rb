@@ -1,9 +1,21 @@
 class AgendasController < ApplicationController
   before_action :set_agenda, only: %i[show edit destroy update]
-  def show   
+
+  def index
+    if current_user.id ==  ProfessionalProfile.find(params[:professional_profile_id]).user.id
+      @agendas = ProfessionalProfile.find(params[:professional_profile_id]).agendas.order(
+        start_time: :desc
+      )
+    else
+      @agendas = []
+    end
   end
 
-  def create  
+  def show
+    authorize @agenda
+  end
+
+  def create
     @agenda = current_user.professional_profile.agendas.new(agenda_params)
     respond_to do |format|
       if @agenda.save
@@ -17,6 +29,8 @@ class AgendasController < ApplicationController
   end
 
   def destroy
+    authorize @agenda
+
     @agenda.destroy
     respond_to do |format|
       format.html { redirect_to root_path, notice: "Agenda was successfully destroyed." }
@@ -25,6 +39,8 @@ class AgendasController < ApplicationController
   end
 
   def update
+    authorize @agenda
+
     respond_to do |format|
       if @agenda.update(agenda_params)
         format.html { redirect_to user_professional_profile_agenda_path(current_user.id, current_user.professional_profile.id, @agenda.id), notice: "Agenda was successfully updated." }
@@ -41,6 +57,7 @@ class AgendasController < ApplicationController
   end
 
   def edit
+    authorize @agenda
   end
 
   private
