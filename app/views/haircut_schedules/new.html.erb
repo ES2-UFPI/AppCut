@@ -1,0 +1,5 @@
+<div class="column is-8 is-offset-2">
+  <h1 class="title">Agendamento em <%= ProfessionalProfile.find(params[:professional_profile_id]).user.name %></h1>
+  <hr>
+  <%= render "form", url: professional_profile_agenda_haircut_schedules_path, barber_shop: ProfessionalProfile.find(params[:professional_profile_id]) %>
+</div>

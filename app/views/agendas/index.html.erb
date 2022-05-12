@@ -1,0 +1,28 @@
+<div class="column is-8 is-offset-2">
+  <h1 class="title is-4">Agendas</h1>
+  <hr>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-striped">
+      <thead>
+        <tr>
+          <th class="has-text-centered">Data</th>
+          <th class="has-text-centered">Hora de início</th>
+          <th class="has-text-centered">Agendamentos feitos</th>
+          <th class="has-text-centered" colspan="2">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @agendas.each do |agenda| %>
+          <tr>
+            <th class="has-text-centered"><%= agenda.start_time.strftime("%d/%m/%Y") %></th>
+            <th class="has-text-centered"><%= agenda.start_time.strftime("%H:%M") %></th>
+            <th class="has-text-centered"><%= agenda.haircut_schedules.size %></th>
+            <th class="has-text-centered"><%= link_to icon("fas", "eye", " Ver"), professional_profile_agenda_path(agenda.professional_profile, agenda) %></th>
+            <th class="has-text-centered"><%= link_to icon("fas", "trash-alt", " Deletar"), professional_profile_agenda_path(agenda.professional_profile, agenda), method: :delete, data: { confirm: "Tem certeza?" } %></th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

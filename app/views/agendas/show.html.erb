@@ -1,3 +1,41 @@
-<h1>show</h1>
+<div class="column is-8 is-offset-2">
+  <h1 class="title is-4">Agenda do dia <%= @agenda.start_time.strftime("%d/%m/%Y") %></h1>
+  <hr>
 
-Renderize sua agenda aqui
+  <div class="table-container">
+    <table class="table is-fullwidth is-striped">
+      <thead>
+        <tr>
+          <th class="has-text-centered">Agendado?</th>
+          <th class="has-text-centered">Horário</th>
+          <th class="has-text-centered">Cliente</th>
+          <th class="has-text-centered" colspan="2">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% get_hours(@agenda).each do |hour| %>
+          <tr>
+            <% if @agenda.haircut_schedules.find_by(reservation_date: hour) %>
+              <th class="has-text-centered"><%= icon("fas", "check", class: "has-text-success") %></th>
+            <% else %>
+              <th class="has-text-centered"><%= icon("fas", "xmark", class: "has-text-danger") %></th>
+            <% end %>
+            <th class="has-text-centered"><%= hour.strftime("%H:%M") %></th>
+            <% if @agenda.haircut_schedules.find_by(reservation_date: hour) %>
+              <th class="has-text-centered"><%= @agenda.haircut_schedules.find_by(reservation_date: hour).user.name %></th>
+            <% else %>
+              <th></th>
+            <% end %>
+            <% if @agenda.haircut_schedules.find_by(reservation_date: hour) %>
+              <th class="has-text-centered"><%= link_to icon("fas", "eye", " Ver"), professional_profile_agenda_haircut_schedule_path(@agenda.professional_profile, @agenda, @agenda.haircut_schedules.find_by(reservation_date: hour)) %></th>
+              <th class="has-text-centered"><%= link_to icon("fas", "trash-alt", " Deletar"), professional_profile_agenda_haircut_schedule_path(@agenda.professional_profile, @agenda, @agenda.haircut_schedules.find_by(reservation_date: hour)), method: :delete, data: { confirm: "Tem certeza?" } %></th>            
+            <% else %>
+              <th></th>
+              <th></th>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

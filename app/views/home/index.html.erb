@@ -1,17 +1,26 @@
-<h1 class= "title has-text-primary">Home#index</h1>
-<% unless current_user %>
-  <%= link_to "Cadastrar", new_user_registration_path %>
-  <br>
-  <%= link_to "Entrar", new_user_session_path %>
-<% end %>
-
-<% if current_user %>
-  <%= link_to "Meus endereços", user_addresses_path(current_user) %>
-  <br>
-  <%= link_to "exibir perfil", user_professional_profile_path(current_user,current_user.professional_profile) %>
-  <br>
-  <%= link_to "Sair", destroy_user_session_path, method: :delete %>
-<% end %>
-
-
-
+<div class="column">
+  <h1 class= "title is-5 has-text-dark">Veja as Barbearias disponíveis</h1>
+  <div class="columns">
+    <% index = 1 %>
+    <% @barber_shops.each do |barber_shop| %>
+      <% if index % 4 == 1 %>
+        </div>
+        <hr>
+        <div class="columns">
+          <div class="column is-3">
+            <%= render "professional_profiles/card", barber_shop: barber_shop %>
+          </div>
+      <% else %>
+        <div class="column is-3">
+          <%= render "professional_profiles/card", barber_shop: barber_shop %>
+        </div>
+      <% end %>
+      <% index += 1 %>
+      <% if barber_shop == @barber_shops.last %>
+        </div>
+      <% end %>
+    <% end %>
+      <div class="control-paginator pt-5">
+        <%= paginate @barber_shops %>
+      </div>
+</div>

@@ -1,4 +1,5 @@
 class ProfessionalProfilesController < ApplicationController
+    before_action :authenticate_user!, only: %i[edit update destroy]
     before_action :set_professional_profile, only: [:show, :edit, :update, :destroy]
     
     # def new
@@ -23,7 +24,16 @@ class ProfessionalProfilesController < ApplicationController
     end
 
     def show
-        @agenda = current_user.professional_profile.agendas.new
+      if current_user
+        @rate = current_user.professional_profile.rates.new
+        if current_user.professional_profile.id == params[:id].to_i
+          @agenda = current_user.professional_profile.agendas.new
+        end
+      end
+      
+      @rates = @professional_profile.rates.order(
+          created_at: :asc
+      ).page(params[:page]).per(5)
     end
 
     def destroy
@@ -41,7 +51,7 @@ class ProfessionalProfilesController < ApplicationController
     end
 
     def professional_profile_params
-        params.require(:professional_profile).permit(:description,:business_hours,:active, :user_id,barber_shop_images: [], haircut_images: [])
+        params.require(:professional_profile).permit(:description,:business_hours,:active, :user_id, :logo, :price, barber_shop_images: [], haircut_images: [])
     end
 
 

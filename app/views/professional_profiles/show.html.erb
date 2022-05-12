@@ -1,10 +1,75 @@
-<h1>ProfessionalProfile#show</h1>
+<div class="column is-offset-2 is-8" id="">
+  <% if current_user %>
+    <%= render "level_menu" %>
+  <% end %>
+  
+  <div class="has-text-centered">
+    <div class="right-image aos-init aos-animate" data-aos="fade-left">
+      <p><%= image_tag @professional_profile.logo, class:"is-rounded", size: "350x350" if @professional_profile.logo.present? %></p>
+      <h1 class="title has-text-centered section-title">Barber Shop</h1>
+    </div>
+  </div>
+  <h3 class="subtitle has-text-centered"><%= @professional_profile.description %></h3>
+
+  <div class="section-dark my-work" id="my-work">
+    <div class="container">
+      <div class="columns is-multiline aos-init aos-animate" data-aos="fade-in" data-aos-easing="linear">
+        <div class="column is-12">
+          <h1 class="title has-text-centered section-title">Conheça Nosso Estabelecimento</h1>
+        </div>
+        <% if @professional_profile.user.addresses.last.present? %>
+          <div class="column is-12">
+            <h3 class="subtitle has-text-centered"><% address = @professional_profile.user.addresses.last %>
+              CEP: <%= address.cep %>, Estado: <%= address.state %> Cidade: <%= address.city %>, Bairro:<%= address.neighborhood %>, Rua: <%= address.street %>, Nº: <%= address.number %> Complemento: <%= address.complement %>, Referência: <%= address.reference %>
+            </h3>
+          </div>
+        <% end %>
+        <% @professional_profile.barber_shop_images.each do |image| %>
+
+          <div class="column is-3">
+            <%= image_tag image, size: "250x250",class:"image-size" %>
+          </div>
+        
+        <% end%>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-dark my-work" id="my-work">
+    <div class="container">
+      <div class="columns is-multiline aos-init aos-animate" data-aos="fade-in" data-aos-easing="linear">
+        <div class="column is-12">
+          <h1 class="title has-text-centered section-title">Galeria de Cortes</h1>
+        </div>
+        <% @professional_profile.haircut_images.each do |image| %>
+          <div class="column is-3">
+            <%= image_tag image, size: "250x250",class:"image-size" %>
+          </div>
+        <% end%>
+      </div>
+    </div>
+  </div>
+
+  <div class="title has-text-centered pt-6 ">
+    <h1 class="title">Deixe aqui seu Feedback</h1>
+    <hr>
+  </div>
+  <div class="main center justify-content">
+    <%= render "/rates/form" %>
+  </div>
+  <div class="title has-text-centered pt-6 ">
+    <h1 class="title">Avaliações</h1>
+    <hr>
+  </div>
+  
+    <% @rates.each do |rate| %>
+      <%= render "/rates/rate", rate: rate %>
+    <% end %>
+  
+    <div class="control-paginator pt-5">
+      <%= paginate @rates %>
+    </div>
+</div>
 
 
-<% if current_user %>
-  <%= link_to "editar perfil", edit_user_professional_profile_path(current_user) %>
-  <br>
-  <%= render "/agendas/modal_agenda" %>
-  <br>
-  <%= link_to "Sair", destroy_user_session_path, method: :delete %>
-<% end %>
+

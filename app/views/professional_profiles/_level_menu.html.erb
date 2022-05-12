@@ -1,0 +1,55 @@
+<% if current_user && policy(@professional_profile).edit? %>
+  <nav class="level">
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Avaliações</p>
+        <p class="title"><%= @rates.size %></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Preço</p>
+        <p class="title">R$<%= @professional_profile.price%></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Editar</p>
+        <p class="title"><%= link_to icon("fas", "pen-to-square"), edit_user_professional_profile_path(current_user), class: "button is-dark" %></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Criar agenda do dia</p>
+        <p class="title"><%= render "/agendas/modal_agenda" %></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Ver agendas</p>
+        <p class="title"><%= link_to "Agendas", professional_profile_agendas_path(@professional_profile), class: "button is-success" %></p>
+      </div>
+    </div>
+  </nav>
+<% else %>
+  <nav class="level">
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Avaliações</p>
+        <p class="title"><%= @rates.size %></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Preço</p>
+        <p class="title">R$<%= @professional_profile.price %></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Agendamento</p>
+        <p class="title"><%= link_to icon("fas", "scissors"), new_professional_profile_agenda_haircut_schedule_path(@professional_profile, @professional_profile.agendas.last), class: "button is-dark is-outlined" if @professional_profile.agendas.any? %></p>
+      </div>
+    </div>
+  </nav>
+<% end %>

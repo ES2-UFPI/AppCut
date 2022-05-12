@@ -15,24 +15,20 @@ class ProfessionalProfilePolicy < ApplicationPolicy
 
   def show?
     user.id == record.user_id
-
-    if user.client?
   end
 
   def create?
   end
 
   def edit?
-    user.id == record.user_id
+    @user.id == record.user_id
   end
 
   def update?
-    user.id == record.user_id
+    :edit?
   end
 
   def destroy?
     user.id == record.user_id
   end
-
-end
 end

@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reservation_date: 2022-05-03 21:57:41
+  agenda: one
+  user: one
+
+two:
+  reservation_date: 2022-05-03 21:57:41
+  agenda: two
+  user: two

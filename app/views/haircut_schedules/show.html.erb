@@ -1,0 +1,22 @@
+<div class="column is-4 is-offset-4">
+  <div class="card">
+    <div class="card-content">
+      <h1 class="title is-5">Agendamento em <%= @haircut_schedule.agenda.professional_profile.user.name %></h1>
+      <p class="subtitle pt-3">Voce possui um agendamento para o horário:</p>
+      <p class="subtitle"><strong><%= @haircut_schedule.reservation_date.strftime("%d/%m/%Y às %H:%M") %></strong></p>
+      <p class="subtitle">Deseja alguma alteração?</p>
+
+      <div class="field is-grouped is-grouped-left">
+        <div class="control">
+          <%= link_to "Editar horário", edit_professional_profile_agenda_haircut_schedule_path(@haircut_schedule.agenda.professional_profile, @haircut_schedule.agenda, @haircut_schedule), class: "button is-dark" %>
+        </div>
+        <div class="control">
+          <%= link_to "Cancelar Agendamento", professional_profile_agenda_haircut_schedule_path, class: "button is-danger", method: :delete, data: { confirm: "Tem certeza?" } %>
+        </div>
+        <div class="control">
+          <%= link_to "Voltar", root_path, class: "button is-warning" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,14 +1,66 @@
+<%= form_with model: professional_profile, url: user_professional_profile_path(@professional_profile), local: true do |form| %>
+    <div class="box">
+      <% if professional_profile.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(professional_profile.errors.count, "error") %> prohibited this professional_profile from being saved:</h2>
+          <ul>
+            <% professional_profile.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
- 
-<%= form_with model: professional_profile, url: user_professional_profile_path(@professional_profile),
-               local: true do |f| %>
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-    <%= f.label :business_hours %>
-    <%= f.number_field :business_hours %>
-    <br><br>
-    <%= f.file_field :barber_shop_images, multiple: true %><br /><br />
-    <%= link_to "X",user_professional_profile_path(@professional_profile), method: :delete, data: { confirm: "Tem certeza?" } %>
-    <%= f.file_field :haircut_images, multiple: true %><br /><br />
-    <%= f.submit 'Upload' %>
+      <div class="field">
+        <%= form.label :Descrição, class: "label" %>
+        <div class="control">
+          <%= form.text_field :description, class: "input is-info", placeholder: "Descrição" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= form.label :business_hours, class: "label" %>
+        <div class="control">
+          <%= form.number_field :business_hours, class: "input is-info", placeholder: "Horas de Funcionamento" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= form.label :price, class: "label" %>
+        <div class="control">
+          <%= form.number_field :price, class: "input is-info", placeholder: "Preço", step: :any %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= form.label :logo, class: "label" %>
+        <div class="control">
+          <%= form.file_field :logo, class: "input is-info", placeholder: "Logo" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= form.label :barber_shop_images, class: "label" %>
+        <div class="control">
+          <%= form.file_field :barber_shop_images, multiple: true, class: "input is-info", placeholder: "Imagens do Local" %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= form.label :haircut_images, class: "label" %>
+        <div class="control">
+          <%= form.file_field :haircut_images, multiple: true, class: "input is-info", placeholder: "Imagens de trabalhos" %>
+        </div>
+      </div>
+
+      <div class="field is-grouped is-grouped-right">
+        <div class="control">
+          <%= form.submit "Concluído", class: "button is-dark" %>
+        </div>
+        <div class="control">
+          <%= link_to "Cancelar", root_path, class: "button is-warning" %>
+        </div>
+      </div>
+    </div>
+
 <% end %>

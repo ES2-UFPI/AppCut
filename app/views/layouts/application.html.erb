@@ -11,6 +11,17 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/navbar" %>
+    <section class="section px-0 py-0">
+      <div class="columns is-variable" id="columns-body">
+        <div class="column" id="column-body">
+          <section class="section py-5">
+            <div class="columns">
+              <%= yield %>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
