@@ -32,15 +32,7 @@ body, button, input, select, textarea {
 }
 
 /* cards images */
-.section-dark.my-work .work-item {
-    margin-bottom: 1rem;
-    -webkit-transition: all .1s ease-in-out;
-    transition: all .1s ease-in-out;
-    border-radius: 5px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    box-shadow: 0 5px 20px rgb(14 25 80 / 30%);
-}
+
 .image.is-2by1 {
     padding-top: 50%;
 }
