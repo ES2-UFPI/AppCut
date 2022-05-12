@@ -1,5 +1,5 @@
 <% if current_user && current_user.client? %>
-    <%= form_with model: @rate, url: user_professional_profile_rates_path(professional_profile_id: current_user.professional_profile.id), local: true do |form| %>
+    <%= form_with model: @rate, url: user_professional_profile_rates_path(professional_profile_id: params[:id] ), local: true do |form| %>
         <div class="">
             <div class="box">
                 <% if @rate.errors.any? %>

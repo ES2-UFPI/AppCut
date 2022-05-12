@@ -10,10 +10,12 @@ class RatesController < ApplicationController
 
     def create
     
-        @rate = current_user.professional_profile.rates.new(rate_params.merge({ professional_profile_id: params[:professional_profile_id],user_id: current_user.id }))
+        @rate = Rate.new(rate_params.merge({user_id: current_user.id, professional_profile_id: params[:professional_profile_id]}))
+        byebug
         respond_to do |format|
             if @rate.save
-                format.html { redirect_to user_professional_profile_path(current_user.id, current_user.professional_profile.id, @rate.id), notice: "rate was successfully created." }
+                byebug
+                format.html { redirect_to user_professional_profile_path(params[:user_id], params[:professional_profile_id]), notice: "rate was successfully created." }
             else
                 format.html { render :new, status: :unprocessable_entity }
             end
