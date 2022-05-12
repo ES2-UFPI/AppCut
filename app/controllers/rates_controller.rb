@@ -17,7 +17,7 @@ class RatesController < ApplicationController
                 byebug
                 format.html { redirect_to user_professional_profile_path(params[:user_id], params[:professional_profile_id]), notice: "rate was successfully created." }
             else
-                format.html { render :new, status: :unprocessable_entity }
+                format.html { redirect_to user_professional_profile_path(params[:user_id], params[:professional_profile_id]), notice: "not  was successfully created." }
             end
         end
     end

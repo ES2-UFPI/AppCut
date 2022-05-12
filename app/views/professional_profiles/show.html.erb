@@ -1,6 +1,7 @@
 <div class="column is-offset-2 is-8" id="">
   <% if current_user %>
     <%= render "level_menu" %>
+    <p id="notice", class="has-text-danger"><%= notice %></p>
   <% end %>
   
   <div class="has-text-centered">

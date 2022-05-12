@@ -23,7 +23,7 @@ class AgendasController < ApplicationController
         format.html { redirect_to user_professional_profile_agenda_path(current_user.id, current_user.professional_profile.id, @agenda.id), notice: "Agenda was successfully created." }
         format.json { render :show, status: :created, location: @agenda }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to user_professional_profile_path(params[:user_id], params[:professional_profile_id]), notice: "Agenda was not  successfully created."}
         format.json { render json: @agenda.errors, status: :unprocessable_entity }
       end
     end
