@@ -10,10 +10,26 @@ import "channels"
 require ("jquery")
 import "bulma/css/bulma.css"
 import "../../../node_modules/bulma/css/bulma.css"
+import bulmaQuickview from 'bulma-quickview/src/js'
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener('turbolinks:load', function() {
+  let quickviews = bulmaQuickview.attach()
+
+  const fileInput = document.querySelectorAll('input[type=file].file-input')
+  fileInput.forEach(input => {
+    input.onchange = () => {
+      if (input.files.length > 0) {
+        const fileName = input.parentNode.querySelector(".file-name")
+        fileName.textContent = input.files[0].name
+      }
+    }
+  })
+})
+
 
 $(document).on('turbolinks:load', function() {
 
