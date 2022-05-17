@@ -65,6 +65,18 @@
             <%= form.text_field :reference, autofocus: true, autocomplete: "Referência", class:"input", placeholder: "Referência" %>
             </div>
           </div>
+          <div class="field">
+            <%= form.label :latitude, class: "lable" %>
+            <div class="control">
+            <%= form.text_field :latitude, autofocus: true, autocomplete: "Latitude", class:"input", placeholder: "Latitude" %>
+            </div>
+          </div>
+          <div class="field">
+            <%= form.label :longitude, class: "lable" %>
+            <div class="control">
+            <%= form.text_field :longitude, autofocus: true, autocomplete: "Longitude", class:"input", placeholder: "Longitude" %>
+            </div>
+          </div>
           <div class="actions">
             <div class="control">
               <%= form.submit %>

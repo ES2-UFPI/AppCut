@@ -51,5 +51,11 @@
         <p class="title"><%= link_to icon("fas", "scissors"), new_professional_profile_agenda_haircut_schedule_path(@professional_profile, @professional_profile.agendas.last), class: "button is-dark is-outlined" if @professional_profile.agendas.any? %></p>
       </div>
     </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Fale Conosco</p>
+        <p class="title"><%= link_to icon("fas", "message"), contacts_path(create_contact(current_user, @professional_profile.user)), class: "button is-dark is-outlined" if current_user %></p>
+      </div>
+    </div>
   </nav>
 <% end %>

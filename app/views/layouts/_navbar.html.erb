@@ -75,6 +75,22 @@
                 Meus endereços
               </div>
             </a>
+            <a class="navbar-item" href="/contacts">
+              <div>
+                <span class="icon is-small">
+                  <%= icon("fas", "users") %>
+                </span>
+                Contatos
+              </div>
+            </a>
+            <a class="navbar-item" href="/chats">
+              <div>
+                <span class="icon is-small">
+                  <%= icon("fas", "message") %>
+                </span>
+                Chats
+              </div>
+            </a>
             <div class="navbar-item">
               <div>
                 <%= link_to icon("fas", "sign-out-alt", "Sair"), destroy_user_session_path, method: :delete %>
@@ -85,9 +101,9 @@
       <% else %>
         <div class="navbar-item">
           <div class="button-group">
-          <%= link_to "Cadastre-se", new_user_registration_path, class: "button is-warning" %>
-          <%= link_to "Entrar", new_user_session_path, class: "button is-dark" %>
-        </div>
+            <%= link_to "Cadastre-se", new_user_registration_path, class: "button is-warning" %>
+            <%= link_to "Entrar", new_user_session_path, class: "button is-dark" %>
+          </div>
         </div>
       <% end %>
     </div>

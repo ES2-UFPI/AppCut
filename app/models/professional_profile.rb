@@ -11,5 +11,5 @@ class ProfessionalProfile < ApplicationRecord
   has_many_attached :barber_shop_images
   has_many_attached :haircut_images
 
-  scope :active, -> { where(:active => true)}
+  scope :active, -> { where(:active => true) }
 end

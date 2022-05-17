@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_09_020049) do
+ActiveRecord::Schema.define(version: 2022_05_15_222924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(version: 2022_05_09_020049) do
     t.index ["professional_profile_id"], name: "index_agendas_on_professional_profile_id"
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "professional_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["professional_id"], name: "index_contacts_on_professional_id"
+    t.index ["user_id"], name: "index_contacts_on_user_id"
+  end
+
   create_table "haircut_schedules", force: :cascade do |t|
     t.datetime "reservation_date"
     t.bigint "agenda_id", null: false
@@ -74,6 +83,16 @@ ActiveRecord::Schema.define(version: 2022_05_09_020049) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["agenda_id"], name: "index_haircut_schedules_on_agenda_id"
     t.index ["user_id"], name: "index_haircut_schedules_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "sender_id", null: false
+    t.bigint "receiver_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "professional_profiles", force: :cascade do |t|
@@ -117,8 +136,12 @@ ActiveRecord::Schema.define(version: 2022_05_09_020049) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "users"
   add_foreign_key "agendas", "professional_profiles"
+  add_foreign_key "contacts", "users"
+  add_foreign_key "contacts", "users", column: "professional_id"
   add_foreign_key "haircut_schedules", "agendas"
   add_foreign_key "haircut_schedules", "users"
+  add_foreign_key "messages", "users", column: "receiver_id"
+  add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "professional_profiles", "users"
   add_foreign_key "rates", "professional_profiles"
   add_foreign_key "rates", "users"
