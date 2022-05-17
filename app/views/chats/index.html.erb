@@ -1,0 +1,28 @@
+<div class="column">
+  <div class="navbar-item has-text-dark has-text-weigth-bold is-size-5">
+    Chats
+  </div>
+
+  <div class="columns is-multiline is-paddingless">
+    <% if @users.length <= 0 %>
+      <div class="notification is-warning">You don't have any chats started yet. Add a contact and try it!</div>
+    <% else %>
+      <% @users.each do |user| %>
+        <div class="column is-12">
+          <div class="columns is-mobile is-vcentered item-list">
+            <div class="column is-marginless is-one-fifth has-text-centered">
+              <% if user.professional_profile.logo.present? %>
+                <figure class="image"><%= image_tag user.professional_profile.logo, class: "is-rounded"%></figure>
+              <% else %>
+                <%= icon("fas", "user", class: "has-text-dark") %>
+              <% end %>
+            </div>
+            <div class="column is-four-fifths">
+              <%= link_to user.name, chat_path(user) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
